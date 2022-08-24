@@ -1,16 +1,8 @@
 <!DOCTYPE html>
 <script>
-    var url = location.search; //获取url中"?“符后的字串
-    if (url.indexOf("?") != -1) {
-        var str = url.substr(1);
-        strs = str.split("&");
-        var code = decodeURIComponent(strs[0].replace("code =", ""));//获取url中的id
-//        window.location.href = "https://192.168.201.112/MFD/ThirdPartyRecharge/codetest?" + code;
-        window.location.href = "http://payauth2.s2.gcsoft.pub:80/MFD/index.html?" + code+"&state=GoogleDrive";
-    }
+    var url = location.search;
+    window.location.href = "https://192.168.201.112/User/Connector/Generic/RedirectOAuth" + decodeURIComponent(location.search);
 </script>
 <html>
-
-<a href="">
 
 </html>
