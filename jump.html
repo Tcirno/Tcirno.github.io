@@ -1,9 +1,27 @@
 <!DOCTYPE html>
 <script>
-    var url = location.search;
-    //window.location.href = "http://payauth2.s2.gcsoft.pub/User/Connector/Generic/RedirectOAuth" + decodeURIComponent(location.search);
-    window.location.href = "https://192.168.201.112/User/Connector/Generic/RedirectOAuth" + decodeURIComponent(location.search);
+    var url = decodeURIComponent(location.search);
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        let i,j = 0;
+        let address = '';
+        for (i = 0; i < strs.length; i++) {
+            if (strs[i].indexOf('state') != -1) {
+                tmpaddress = strs[i].substr(strs[i].indexOf('(') + 1);
+                for(j = 0; j < tmpaddress.length-1; j++){
+                    address+=tmpaddress[j];
+                }
+            }
+        }
+        if (address != '') {
+            window.location.href = "https://" + address + "/User/Connector/Generic/RedirectOAuth" + decodeURIComponent(location.search);
+        }
+    }
 </script>
+
 <html>
+
+<h1>Redirecting...</h1>
 
 </html>
